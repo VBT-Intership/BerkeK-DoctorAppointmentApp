@@ -14,6 +14,16 @@ class Doctor {
       this.reviewCount,
       this.photo});
 
+  factory Doctor.fromJson(Map<String, dynamic> json) => new Doctor (
+    id: json['_id'],
+    name: json['name'],
+    category: json['category'],
+    score: json['score'],
+    reviewCount: json['reviewCount'],
+    photo: json['photo']
+  );
+
+
   List<Doctor> getDummyDoctorsList() {
     List<Doctor> doctorsList = new List<Doctor>();
     doctorsList.add(new Doctor(

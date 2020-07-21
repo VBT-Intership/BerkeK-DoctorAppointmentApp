@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:doctors_app/components/doctorCard.dart';
 import 'package:doctors_app/models/Doctor.dart';
+import 'package:doctors_app/networks/DoctorsOperations.dart';
 import 'package:doctors_app/screens/DoctorDetailPage.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +14,20 @@ class DoctorsPage extends StatefulWidget {
 class _DoctorsPageState extends State<DoctorsPage> {
   List<Doctor> doctorsList;
 
+  DoctorsOperations doctorsOperations;
+
   @override
   void initState() {
     super.initState();
+
+    // If you run this line, data comes from dummy data.
     doctorsList = new Doctor().getDummyDoctorsList();
+
+    // If you run this line, data comes from mongodb database
+    doctorsOperations = new DoctorsOperations();
+    doctorsOperations.getAll().then((value) {
+      print(value);
+    });
   }
 
   @override
@@ -60,7 +73,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
     return ListView(
       children: [
         _searchBar(),
-        _doctorsGrid(),
+        doctorsList.length == 0 ? _showLoadingBar() : _doctorsGrid(),
       ],
     );
   }
@@ -71,7 +84,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
       child: TextField(
         onChanged: (value) {
           if (value == "") {
-                        setState(() {
+            setState(() {
               doctorsList = new Doctor().getDummyDoctorsList();
             });
           } else {
@@ -116,6 +129,20 @@ class _DoctorsPageState extends State<DoctorsPage> {
           );
         },
       ),
+    );
+  }
+
+  Widget _showLoadingBar() {
+    return Center(
+      heightFactor: 8,
+      child: SizedBox(
+    height: 50.0,
+    width: 50.0,
+    child: 
+        CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation(Colors.black),
+        strokeWidth: 2.0)
+    ),
     );
   }
 }
