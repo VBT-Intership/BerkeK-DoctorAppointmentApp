@@ -10,8 +10,8 @@ Linkte yer alan tasarım geliştirilmeye çalışılmıştır. Proje şu aşamad
 - Doktor Randevu Alma Ekranı [X]
 
 ### Yapılacaklar
-- Verileri Dinamik Olarak Gelecek
-- Doktorlar Sayfasında Arama Yapma
+- Verileri Dinamik Olarak Getirme [X]
+- Doktorlar Sayfasında Arama Yapma [✓]
 
 ### Ekran Görüntüleri
-Birazdan Eklenecektir...
+[![Gif01](https://raw.githubusercontent.com/VBT-Intership/BerkeK-DoctorAppointmentApp/master/gifapp.gif)]() <br/>

@@ -123,10 +123,10 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _widgetDoctorProperty(
-            Icon(Icons.people, color: Colors.blue,), Colors.blue.shade100, "1000+", "Patiens"),
-        _widgetDoctorProperty(Icon(Icons.bookmark_border, color: Colors.red,), Colors.red.shade100,
+            Icon(Icons.people, color: Colors.blue,), Colors.blue.shade100.withOpacity(0.5), "1000+", "Patiens"),
+        _widgetDoctorProperty(Icon(Icons.bookmark_border, color: Colors.red,), Colors.red.shade100.withOpacity(0.5),
             "10 Yrs", "Experience"),
-        _widgetDoctorProperty(Icon(Icons.star_border, color: Colors.orange,), Colors.orange.shade100,
+        _widgetDoctorProperty(Icon(Icons.star_border, color: Colors.orange,), Colors.orange.shade100.withOpacity(0.5),
             "${widget.doctor.score}", "Ratings"),
       ],
     );
@@ -194,7 +194,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
           _widgetCommunicationProperty(
               "Messaging",
               "Chat me up, share photos",
-              Colors.pink.shade100,
+              Colors.pink.shade100.withOpacity(0.5),
               Icon(
                 Icons.message,
                 color: Colors.pink,
@@ -205,7 +205,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
           _widgetCommunicationProperty(
               "Audio Call",
               "Chat me up, share photos",
-              Colors.blue.shade100,
+              Colors.blue.shade100.withOpacity(0.5),
               Icon(
                 Icons.phone,
                 color: Colors.blue,
@@ -216,7 +216,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
           _widgetCommunicationProperty(
               "Video Call",
               "Chat me up, share photos",
-              Colors.orange.shade100,
+              Colors.orange.shade100.withOpacity(0.5),
               Icon(
                 Icons.camera_alt,
                 color: Colors.orange,
@@ -256,9 +256,12 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
         child: Column(
           children: [
             Container(
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+              ),
               height: 60,
               width: 40,
-              color: color,
               child: icon,
             ),
             Padding(
